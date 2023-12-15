@@ -1,16 +1,40 @@
-# This is a sample Python script.
+import os
+import pygame
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-#Brandon
+# Sets Width / Height / Title of game window
+WIDTH, HEIGHT = 900, 500
+WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("First Game!")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+WHITE = (255, 255, 255)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# Contains code for updating window display
+def draw_window():
+    WIN.fill(WHITE)
+    pygame.display.update()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+# Main function containing events to be looped
+# Collision, Movement, etc.
+def main():
+    # Controls speed of while loop
+    # Creates consistency amongst other systems
+    clock = pygame.time.Clock()
+    run = True
+    while run:
+        clock.tick(60)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
+        draw_window()
+
+    pygame.quit()
+
+
+# Checks to make sure main() is only ran if the file is selected directly
+# Won't run if file is imported into another file
+if __name__ == "__main__":
+    main()
+
